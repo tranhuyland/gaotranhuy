@@ -1,0 +1,5 @@
+User-agent: *
+
+Allow: /
+
+Sitemap: https://gaotranhuy.vercel.app/sitemap.xml
