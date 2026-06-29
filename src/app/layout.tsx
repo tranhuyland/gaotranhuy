@@ -1,32 +1,12 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import { Hero } from "@/components/home/Hero";
+import { Categories } from "@/components/home/Categories";
 
-import {
-  Header,
-  Footer,
-} from "@/components/layout";
-
-export const metadata: Metadata = {
-  title: "Gạo Trần Huy",
-  description: "Website bán gạo sạch chất lượng cao.",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function HomePage() {
   return (
-    <html lang="vi">
-      <body className="min-h-screen bg-gray-50 text-gray-900">
+    <>
+      <Hero />
 
-        <Header />
-
-        {children}
-
-        <Footer />
-
-      </body>
-    </html>
+      <Categories />
+    </>
   );
 }
