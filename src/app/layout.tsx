@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { Header } from "@/components/layout";
+import {
+  Header,
+  Footer,
+} from "@/components/layout";
 
 export const metadata: Metadata = {
   title: "Gạo Trần Huy",
@@ -16,9 +19,13 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body className="min-h-screen bg-gray-50 text-gray-900">
+
         <Header />
 
         {children}
+
+        <Footer />
+
       </body>
     </html>
   );
