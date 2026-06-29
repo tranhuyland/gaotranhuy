@@ -1,13 +1,13 @@
 export default function HomePage() {
   return (
-    <main
-      style={{
-        padding: 40
-      }}
-    >
-      <h1>Gạo Trần Huy</h1>
+    <main className="mx-auto max-w-7xl p-6">
+      <h1 className="text-4xl font-bold">
+        Gạo Trần Huy
+      </h1>
 
-      <p>Starter V1</p>
+      <p className="mt-4 text-gray-600">
+        Starter V1.0
+      </p>
     </main>
   );
 }
