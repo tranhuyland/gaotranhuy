@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import "./globals.css";
 
-import { AppProvider } from "@/providers";
+import { Header } from "@/components/layout";
+
+export const metadata: Metadata = {
+  title: "Gạo Trần Huy",
+  description: "Website bán gạo sạch chất lượng cao.",
+};
 
 export default function RootLayout({
   children,
@@ -9,10 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <body>
-        <AppProvider>
-          {children}
-        </AppProvider>
+      <body className="min-h-screen bg-gray-50 text-gray-900">
+        <Header />
+
+        {children}
       </body>
     </html>
   );
