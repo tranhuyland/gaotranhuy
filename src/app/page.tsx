@@ -1,30 +1,20 @@
-import {
-  Logo,
-  MobileMenu,
-  SearchBox,
-  CartButton,
-} from "@/components/layout";
+import { Header } from "@/components/layout";
 
 export default function HomePage() {
   return (
-    <main className="mx-auto max-w-7xl p-6">
-      <div className="flex items-center justify-between">
-        <Logo />
+    <>
+      <Header />
 
-        <div className="flex items-center gap-3">
-          <SearchBox />
+      <main className="mx-auto max-w-7xl px-4 py-16">
+        <h1 className="text-5xl font-bold text-green-700">
+          Gạo Trần Huy
+        </h1>
 
-          <CartButton count={2} />
-
-          <MobileMenu />
-        </div>
-      </div>
-
-      <h2 className="mt-10 text-3xl font-bold">
-        Gạo Trần Huy
-      </h2>
-
-      <p>Starter V1.0</p>
-    </main>
+        <p className="mt-4 text-lg text-gray-600">
+          Chuyên cung cấp gạo sạch, gạo ST25, Jasmine, Bắc Hương,
+          Nàng Thơm và nhiều loại gạo chất lượng cao.
+        </p>
+      </main>
+    </>
   );
 }
