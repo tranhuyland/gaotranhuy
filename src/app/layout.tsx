@@ -1,15 +1,17 @@
 import "./globals.css";
-
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Gạo Trần Huy",
-
-  description: "Website bán gạo sạch"
+  title: {
+    default: "Gạo Trần Huy",
+    template: "%s | Gạo Trần Huy",
+  },
+  description:
+    "Chuyên cung cấp gạo ST25, Jasmine, Bắc Hương, Nàng Thơm và nhiều loại gạo chất lượng cao.",
 };
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
