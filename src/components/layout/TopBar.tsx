@@ -5,7 +5,6 @@ export function TopBar() {
         <p>
           🚚 Miễn phí giao hàng nội thành Huế
         </p>
-
         <div className="flex items-center gap-6">
           <span>☎ Hotline: 0905 000 000</span>
 
