@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+import { Search } from "lucide-react";
 export function SearchBox() {
   const [keyword, setKeyword] = useState("");
 
@@ -26,18 +26,10 @@ export function SearchBox() {
       />
 
       <button
-        className="
-          rounded-r-xl
-          bg-green-600
-          px-4
-          py-2
-          text-white
-          transition
-          hover:bg-green-700
-        "
-      >
-        🔍
-      </button>
+  className="rounded-r-xl bg-green-600 px-4 py-2 text-white hover:bg-green-700"
+>
+  <Search size={18} />
+</button>
     </div>
   );
 }
