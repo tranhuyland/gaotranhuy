@@ -3,3 +3,4 @@ export * from "./DesktopMenu";
 export * from "./MobileMenu";
 export * from "./SearchBox";
 export * from "./CartButton";
+export * from "./Header";
