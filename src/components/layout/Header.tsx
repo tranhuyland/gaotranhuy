@@ -1,3 +1,4 @@
+import { TopBar } from "./TopBar";
 import { Logo } from "./Logo";
 import { DesktopMenu } from "./DesktopMenu";
 import { MobileMenu } from "./MobileMenu";
@@ -6,27 +7,26 @@ import { CartButton } from "./CartButton";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+    <>
+      <TopBar />
 
-        {/* Logo */}
-        <Logo />
+      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white shadow-sm">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
 
-        {/* Desktop Menu */}
-        <DesktopMenu />
+          <Logo />
 
-        {/* Right */}
-        <div className="flex items-center gap-3">
+          <DesktopMenu />
 
-          <SearchBox />
+          <div className="flex items-center gap-3">
+            <SearchBox />
 
-          <CartButton />
+            <CartButton />
 
-          <MobileMenu />
+            <MobileMenu />
+          </div>
 
         </div>
-
-      </div>
-    </header>
+      </header>
+    </>
   );
 }
