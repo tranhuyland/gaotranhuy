@@ -3,43 +3,34 @@
 import { ShoppingCart } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
+import { useCartStore } from "@/features/cart/store";
 import type { Product } from "@/types/product";
 
 interface AddToCartButtonProps {
   product: Product;
-  quantity?: number;
-  loading?: boolean;
-  onAddToCart?: (product: Product, quantity: number) => void;
 }
 
 export function AddToCartButton({
   product,
-  quantity = 1,
-  loading = false,
-  onAddToCart,
 }: AddToCartButtonProps) {
-  const isOutOfStock = product.stock <= 0;
+  const addItem = useCartStore(
+    (state) => state.addItem
+  );
 
-  const handleClick = () => {
-    if (isOutOfStock || loading) return;
-
-    onAddToCart?.(product, quantity);
-  };
+  const isOutOfStock =
+    product.stock <= 0;
 
   return (
     <Button
-      type="button"
-      className="w-full gap-2"
-      disabled={isOutOfStock || loading}
-      onClick={handleClick}
+      onClick={() => addItem(product)}
+      disabled={isOutOfStock}
+      className="w-full"
     >
       <ShoppingCart className="h-5 w-5" />
 
-      {loading
-        ? "Đang thêm..."
-        : isOutOfStock
-          ? "Hết hàng"
-          : "Thêm vào giỏ hàng"}
+      {isOutOfStock
+        ? "Hết hàng"
+        : "Thêm vào giỏ hàng"}
     </Button>
   );
 }
