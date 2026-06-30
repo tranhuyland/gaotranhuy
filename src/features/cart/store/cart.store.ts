@@ -2,6 +2,12 @@ import { create } from "zustand";
 
 import type { Product } from "@/types/product";
 
+import {
+  clearCartStorage,
+  loadCart,
+  saveCart,
+} from "../services";
+
 import type {
   Cart,
   CartItem,
@@ -57,17 +63,13 @@ function buildSummary(items: CartItem[]) {
   };
 }
 
+const initialItems = loadCart();
+
 export const useCartStore =
   create<CartStore>((set) => ({
-    items: [],
+    items: initialItems,
 
-    summary: {
-      subtotal: 0,
-      discount: 0,
-      shippingFee: 0,
-      total: 0,
-      totalItems: 0,
-    },
+    summary: buildSummary(initialItems),
 
     addItem(product, quantity = 1) {
       set((state) => {
@@ -98,6 +100,8 @@ export const useCartStore =
           ];
         }
 
+        saveCart(items);
+
         return {
           items,
           summary: buildSummary(items),
@@ -112,6 +116,8 @@ export const useCartStore =
             (item) =>
               item.product.id !== productId
           );
+
+        saveCart(items);
 
         return {
           items,
@@ -135,6 +141,8 @@ export const useCartStore =
               : item
         );
 
+        saveCart(items);
+
         return {
           items,
           summary: buildSummary(items),
@@ -156,6 +164,8 @@ export const useCartStore =
           .filter(
             (item) => item.quantity > 0
           );
+
+        saveCart(items);
 
         return {
           items,
@@ -185,6 +195,8 @@ export const useCartStore =
               : item
         );
 
+        saveCart(items);
+
         return {
           items,
           summary: buildSummary(items),
@@ -193,6 +205,8 @@ export const useCartStore =
     },
 
     clearCart() {
+      clearCartStorage();
+
       set({
         items: [],
         summary: {
