@@ -1,19 +1,21 @@
-import type { BaseEntity } from "./common";
+export type ProductUnit =
+  | "kg"
+  | "bao";
 
-export type ProductUnit = "kg" | "bao";
+export interface Product {
+  id: string;
 
-export interface Product extends BaseEntity {
   slug: string;
-
-  name: string;
 
   sku: string;
 
-  category: string;
+  name: string;
 
   description: string;
 
   shortDescription: string;
+
+  category: string;
 
   images: string[];
 
@@ -26,4 +28,8 @@ export interface Product extends BaseEntity {
   featured: boolean;
 
   unit: ProductUnit;
+
+  createdAt: string;
+
+  updatedAt: string;
 }
