@@ -5,6 +5,7 @@ import { getFeaturedProducts } from "@/lib/products/product-service";
 export function FeaturedProducts() {
   const featuredProducts = getFeaturedProducts();
 
+
   return (
     <Section className="bg-gray-50">
       <Container>
