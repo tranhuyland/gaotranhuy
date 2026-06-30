@@ -3,37 +3,27 @@ export const siteConfig = {
 
   shortName: "GTH",
 
-  title: "Gạo Trần Huy | Gạo sạch cho mọi gia đình",
-
-  description:
-    "Chuyên cung cấp gạo ST25, Jasmine, Bắc Hương, Nàng Thơm và nhiều loại gạo chất lượng cao.",
-
   url:
     process.env.NEXT_PUBLIC_SITE_URL ??
-    "https://gaotranhuy.vercel.app",
+    "https://gaotranhuy.vn",
 
-  logo: "/logo.svg",
+  title:
+    "Gạo Trần Huy | Gạo sạch chất lượng cao",
 
-  ogImage: "/images/og-image.jpg",
-
-  locale: "vi_VN",
-
-  email: "contact@gaotranhuy.vn",
-
-  phone: "0905000000",
-
-  facebook: "",
-
-  zalo: "",
+  description:
+    "Chuyên cung cấp gạo ST25, Jasmine, Bắc Hương, Nàng Thơm và nhiều loại gạo sạch chất lượng cao.",
 
   keywords: [
     "gạo sạch",
     "gạo ST25",
     "gạo Jasmine",
-    "gạo Bắc Hương",
-    "gạo Nàng Thơm",
-    "mua gạo online"
-  ]
-} as const;
+    "gạo Huế",
+    "mua gạo online",
+  ],
 
-export type SiteConfig = typeof siteConfig;
+  email: "contact@gaotranhuy.vn",
+
+  phone: "0905000000",
+
+  locale: "vi_VN",
+};
