@@ -16,13 +16,19 @@ export function DesktopMenu() {
           <Link
             key={item.href}
             href={item.href}
-            className={`transition ${
+            className={`relative text-sm font-medium transition-colors duration-200 ${
               active
-                ? "font-semibold text-green-700"
+                ? "text-green-700"
                 : "text-gray-700 hover:text-green-700"
             }`}
           >
             {item.title}
+
+            <span
+              className={`absolute -bottom-2 left-0 h-0.5 rounded-full bg-green-600 transition-all duration-300 ${
+                active ? "w-full" : "w-0"
+              }`}
+            />
           </Link>
         );
       })}
