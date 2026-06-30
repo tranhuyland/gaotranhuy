@@ -19,6 +19,24 @@ export const products: Product[] = [
     stock: 120,
     featured: true,
     unit: "kg",
+    specs: [
+  {
+    label: "Xuất xứ",
+    value: "Sóc Trăng",
+  },
+  {
+    label: "Đóng gói",
+    value: "Túi 5kg",
+  },
+  {
+    label: "Hạn sử dụng",
+    value: "12 tháng",
+  },
+  {
+    label: "Bảo quản",
+    value: "Nơi khô ráo, thoáng mát",
+  },
+],
     createdAt: "2026-01-01T00:00:00.000Z",
     updatedAt: "2026-01-01T00:00:00.000Z",
   },
@@ -39,6 +57,24 @@ export const products: Product[] = [
     stock: 80,
     featured: true,
     unit: "kg",
+    specs: [
+  {
+    label: "Xuất xứ",
+    value: "Đồng bằng sông Cửu Long",
+  },
+  {
+    label: "Đóng gói",
+    value: "Túi 5kg",
+  },
+  {
+    label: "Hạn sử dụng",
+    value: "12 tháng",
+  },
+  {
+    label: "Bảo quản",
+    value: "Nơi khô ráo, thoáng mát",
+  },
+],
     createdAt: "2026-01-01T00:00:00.000Z",
     updatedAt: "2026-01-01T00:00:00.000Z",
   },
@@ -59,6 +95,24 @@ export const products: Product[] = [
     stock: 60,
     featured: false,
     unit: "kg",
+    specs: [
+  {
+    label: "Xuất xứ",
+    value: "Miền Bắc",
+  },
+  {
+    label: "Đóng gói",
+    value: "Túi 5kg",
+  },
+  {
+    label: "Hạn sử dụng",
+    value: "12 tháng",
+  },
+  {
+    label: "Bảo quản",
+    value: "Nơi khô ráo, thoáng mát",
+  },
+],
     createdAt: "2026-01-01T00:00:00.000Z",
     updatedAt: "2026-01-01T00:00:00.000Z",
   },
