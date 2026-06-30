@@ -22,3 +22,15 @@ export function getProductsByCategory(
     (product) => product.category === category
   );
 }
+export function getRelatedProducts(
+  product: Product,
+  limit = 4
+): Product[] {
+  return products
+    .filter(
+      (item) =>
+        item.id !== product.id &&
+        item.category === product.category
+    )
+    .slice(0, limit);
+}
