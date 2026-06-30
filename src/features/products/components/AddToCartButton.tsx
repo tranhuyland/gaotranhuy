@@ -29,7 +29,6 @@ export function AddToCartButton({
   return (
     <Button
       type="button"
-      size="lg"
       className="w-full gap-2"
       disabled={isOutOfStock || loading}
       onClick={handleClick}
