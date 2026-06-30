@@ -25,31 +25,39 @@ const categories = [
 
 export function Categories() {
   return (
-    <section className="py-16 bg-white">
-      <div className="mx-auto max-w-7xl px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-900">
-          Danh mục gạo
-        </h2>
+    <section className="bg-white py-12 md:py-16 lg:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        <p className="mt-3 text-center text-gray-600">
-          Lựa chọn loại gạo phù hợp với gia đình bạn.
-        </p>
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+            Danh mục gạo
+          </h2>
 
-        <div className="mt-10 grid grid-cols-2 gap-5 md:grid-cols-4">
+          <p className="mt-4 text-base text-gray-600 sm:text-lg">
+            Lựa chọn loại gạo phù hợp với nhu cầu của gia đình bạn.
+          </p>
+        </div>
+
+        <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+
           {categories.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm transition hover:-translate-y-1 hover:border-green-600 hover:shadow-lg"
+              className="group rounded-2xl border border-gray-200 bg-white p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-green-600 hover:shadow-xl"
             >
-              <div className="text-5xl">{item.icon}</div>
+              <div className="text-4xl transition-transform duration-300 group-hover:scale-110 sm:text-5xl">
+                {item.icon}
+              </div>
 
-              <h3 className="mt-4 text-lg font-semibold">
+              <h3 className="mt-4 text-base font-semibold text-gray-900 sm:text-lg">
                 {item.name}
               </h3>
             </Link>
           ))}
+
         </div>
+
       </div>
     </section>
   );
