@@ -1,22 +1,22 @@
-export type ProductUnit =
-  | "kg"
-  | "bao";
+export interface ProductSpec {
+  label: string;
+  value: string;
+}
 
 export interface Product {
   id: string;
 
   slug: string;
 
+  name: string;
 
   sku: string;
 
-  name: string;
+  category: string;
 
   description: string;
 
   shortDescription: string;
-
-  category: string;
 
   images: string[];
 
@@ -28,7 +28,9 @@ export interface Product {
 
   featured: boolean;
 
-  unit: ProductUnit;
+  unit: "kg" | "bao";
+
+  specs: ProductSpec[];
 
   createdAt: string;
 
