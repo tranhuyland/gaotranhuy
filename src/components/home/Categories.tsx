@@ -1,27 +1,5 @@
 import Link from "next/link";
-
-const categories = [
-  {
-    name: "Gạo ST25",
-    href: "/danh-muc/st25",
-    icon: "🌾",
-  },
-  {
-    name: "Gạo Jasmine",
-    href: "/danh-muc/jasmine",
-    icon: "🍚",
-  },
-  {
-    name: "Gạo Bắc Hương",
-    href: "/danh-muc/bac-huong",
-    icon: "🌿",
-  },
-  {
-    name: "Gạo Nàng Thơm",
-    href: "/danh-muc/nang-thom",
-    icon: "⭐",
-  },
-];
+import { categories } from "@/data/categories";
 
 export function Categories() {
   return (
@@ -30,32 +8,30 @@ export function Categories() {
 
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-            Danh mục gạo
+            Danh mục sản phẩm
           </h2>
 
           <p className="mt-4 text-base text-gray-600 sm:text-lg">
-            Lựa chọn loại gạo phù hợp với nhu cầu của gia đình bạn.
+            Khám phá các dòng gạo và đặc sản chất lượng tại Gạo Trần Huy.
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-
+        <div className="mt-10 grid grid-cols-2 gap-5 md:grid-cols-3">
           {categories.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="group rounded-2xl border border-gray-200 bg-white p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-green-600 hover:shadow-xl"
+              className="group rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-green-600 hover:shadow-xl"
             >
-              <div className="text-4xl transition-transform duration-300 group-hover:scale-110 sm:text-5xl">
+              <div className="text-5xl transition-transform duration-300 group-hover:scale-110">
                 {item.icon}
               </div>
 
-              <h3 className="mt-4 text-base font-semibold text-gray-900 sm:text-lg">
+              <h3 className="mt-4 text-base font-semibold leading-6 text-gray-900">
                 {item.name}
               </h3>
             </Link>
           ))}
-
         </div>
 
       </div>
