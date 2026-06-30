@@ -2,24 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { featuredProducts } from "@/data/products";
+import { SectionTitle } from "@/components/ui";
 
 export function FeaturedProducts() {
   return (
     <section className="bg-gray-50 py-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-            Sản phẩm nổi bật
-          </h2>
-
-          <p className="mt-4 text-base text-gray-600 sm:text-lg">
-            Những sản phẩm được khách hàng lựa chọn nhiều nhất.
-          </p>
-        </div>
+        <SectionTitle
+          title="Sản phẩm nổi bật"
+          description="Những sản phẩm được khách hàng lựa chọn nhiều nhất."
+        />
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
-
           {featuredProducts.map((product) => (
             <article
               key={product.id}
@@ -35,7 +30,6 @@ export function FeaturedProducts() {
               </div>
 
               <div className="p-5">
-
                 <h3 className="text-xl font-semibold text-gray-900">
                   {product.name}
                 </h3>
@@ -50,11 +44,9 @@ export function FeaturedProducts() {
                 >
                   Xem chi tiết
                 </Link>
-
               </div>
             </article>
           ))}
-
         </div>
 
       </div>
