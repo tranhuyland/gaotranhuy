@@ -1,20 +1,17 @@
 import Link from "next/link";
+
 import { categories } from "@/data/categories";
+import { SectionTitle } from "@/components/ui";
 
 export function Categories() {
   return (
     <section className="bg-white py-12 md:py-16 lg:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-            Danh mục sản phẩm
-          </h2>
-
-          <p className="mt-4 text-base text-gray-600 sm:text-lg">
-            Khám phá các dòng gạo và đặc sản chất lượng tại Gạo Trần Huy.
-          </p>
-        </div>
+        <SectionTitle
+          title="Danh mục sản phẩm"
+          description="Khám phá các dòng gạo và đặc sản chất lượng tại Gạo Trần Huy."
+        />
 
         <div className="mt-10 grid grid-cols-2 gap-5 md:grid-cols-3">
           {categories.map((item) => (
