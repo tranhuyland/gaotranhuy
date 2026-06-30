@@ -1,37 +1,27 @@
-export interface NavigationItem {
-  label: string;
-
+export interface NavItem {
+  title: string;
   href: string;
 }
 
-export const navigation: NavigationItem[] = [
+export const navigation: NavItem[] = [
   {
-    label: "Trang chủ",
+    title: "Trang chủ",
     href: "/",
   },
-
   {
-    label: "Sản phẩm",
+    title: "Sản phẩm",
     href: "/san-pham",
   },
-
   {
-    label: "Danh mục",
-    href: "/danh-muc",
-  },
-
-  {
-    label: "Tin tức",
+    title: "Tin tức",
     href: "/tin-tuc",
   },
-
   {
-    label: "Giới thiệu",
+    title: "Giới thiệu",
     href: "/gioi-thieu",
   },
-
   {
-    label: "Liên hệ",
+    title: "Liên hệ",
     href: "/lien-he",
   },
 ];
