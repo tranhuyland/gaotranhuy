@@ -15,7 +15,7 @@ export function ProductCard({
       <Link href={`/san-pham/${product.slug}`}>
         <div className="relative aspect-square overflow-hidden">
           <Image
-            src={product.image}
+            src={product.images[0]}
             alt={product.name}
             fill
             className="object-cover transition-transform duration-300 hover:scale-105"
@@ -31,7 +31,7 @@ export function ProductCard({
         </Link>
 
         <p className="mt-2 text-lg font-bold text-green-700 md:text-2xl">
-          {product.price}
+          {(product.salePrice ?? product.price).toLocaleString("vi-VN")}đ
         </p>
 
         <Link
