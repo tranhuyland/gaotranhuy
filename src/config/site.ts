@@ -26,4 +26,7 @@ export const siteConfig = {
   phone: "0905000000",
 
   locale: "vi_VN",
+
+  // 👇 Thêm dòng này
+  ogImage: "/images/og-image.jpg",
 };
