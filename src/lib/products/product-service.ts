@@ -22,3 +22,4 @@ export function getProductsByCategory(
     (product) => product.category === category
   );
 }
+
