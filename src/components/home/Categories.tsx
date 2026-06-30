@@ -1,13 +1,12 @@
 import Link from "next/link";
 
 import { categories } from "@/data/categories";
-import { SectionTitle } from "@/components/ui";
+import { Container, Section, SectionTitle } from "@/components/ui";
 
 export function Categories() {
   return (
-    <section className="bg-white py-12 md:py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
+    <Section className="bg-white">
+      <Container>
         <SectionTitle
           title="Danh mục sản phẩm"
           description="Khám phá các dòng gạo và đặc sản chất lượng tại Gạo Trần Huy."
@@ -30,8 +29,7 @@ export function Categories() {
             </Link>
           ))}
         </div>
-
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }
