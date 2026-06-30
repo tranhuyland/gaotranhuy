@@ -6,31 +6,32 @@ export function getProducts(): Product[] {
 }
 
 export function getFeaturedProducts(): Product[] {
-  return products.filter((product) => product.featured);
+  return products.filter((p) => p.featured === true);
 }
 
 export function getProductBySlug(
   slug: string
 ): Product | undefined {
-  return products.find((product) => product.slug === slug);
+  return products.find((p) => p.slug === slug);
 }
 
 export function getProductsByCategory(
   category: string
 ): Product[] {
   return products.filter(
-    (product) => product.category === category
+    (p) => p.category === category
   );
 }
+
 export function getRelatedProducts(
   product: Product,
   limit = 4
 ): Product[] {
   return products
     .filter(
-      (item) =>
-        item.id !== product.id &&
-        item.category === product.category
+      (p) =>
+        p.id !== product.id &&
+        p.category === product.category
     )
     .slice(0, limit);
 }
