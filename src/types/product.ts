@@ -1,5 +1,7 @@
 import type { BaseEntity } from "./common";
 
+export type ProductUnit = "kg" | "bao";
+
 export interface Product extends BaseEntity {
   slug: string;
 
@@ -23,5 +25,5 @@ export interface Product extends BaseEntity {
 
   featured: boolean;
 
-  unit: "kg" | "bao";
+  unit: ProductUnit;
 }
