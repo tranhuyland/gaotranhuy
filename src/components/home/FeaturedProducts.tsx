@@ -2,13 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { featuredProducts } from "@/data/products";
-import { SectionTitle } from "@/components/ui";
+import { Container, Section, SectionTitle } from "@/components/ui";
 
 export function FeaturedProducts() {
   return (
-    <section className="bg-gray-50 py-12 md:py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
+    <Section className="bg-gray-50">
+      <Container>
         <SectionTitle
           title="Sản phẩm nổi bật"
           description="Những sản phẩm được khách hàng lựa chọn nhiều nhất."
@@ -48,8 +47,7 @@ export function FeaturedProducts() {
             </article>
           ))}
         </div>
-
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }
