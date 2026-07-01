@@ -1,7 +1,19 @@
-// src/app/san-pham/[slug]/page.tsx
-
 import { notFound } from "next/navigation";
-import { getProductBySlug } from "@/lib/products/product-service";
+
+import {
+  ProductDescription,
+  ProductGallery,
+  ProductInfo,
+  ProductSpecs,
+  PriceBox,
+  RelatedProducts,
+  AddToCartButton,
+} from "@/features/products/components";
+
+import {
+  getProductBySlug,
+  getRelatedProducts,
+} from "@/lib/products/product-service";
 
 type Props = {
   params: Promise<{
@@ -17,28 +29,60 @@ export default async function ProductDetailPage({
   const product = getProductBySlug(slug);
 
   if (!product) {
-    notFound();
+    return notFound();
   }
 
+  const relatedProducts =
+    getRelatedProducts(product);
+
   return (
-    <main className="mx-auto max-w-6xl p-6">
-      <h1 className="text-3xl font-bold">{product.name}</h1>
+    <main className="mx-auto max-w-7xl px-4 py-10">
 
-      <p className="mt-4 text-gray-600">
-        {product.description}
-      </p>
+      <div className="grid gap-10 lg:grid-cols-2">
 
-      <div className="mt-6">
-        <p className="text-2xl font-bold text-green-700">
-          {(product.salePrice ?? product.price).toLocaleString("vi-VN")}đ
-        </p>
+        <ProductGallery
+          images={product.images}
+          productName={product.name}
+        />
 
-        {product.salePrice && (
-          <p className="text-gray-500 line-through">
-            {product.price.toLocaleString("vi-VN")}đ
-          </p>
-        )}
+        <div className="space-y-6">
+
+          <ProductInfo product={product} />
+
+          <PriceBox product={product} />
+
+          <AddToCartButton
+            product={product}
+          />
+
+        </div>
+
       </div>
+
+      <div className="mt-12">
+
+        <ProductDescription
+          description={product.description}
+        />
+
+      </div>
+
+      <div className="mt-8">
+
+        <ProductSpecs
+          specs={product.specs}
+        />
+
+      </div>
+
+      <div className="mt-12">
+
+        <RelatedProducts
+          products={relatedProducts}
+        />
+
+      </div>
+
     </main>
   );
 }
