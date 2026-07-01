@@ -39,14 +39,14 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body className="min-h-screen bg-gray-50 text-gray-900">
-  <Header />
+        <Header />
 
-  {children}
+        {children}
 
-  <Footer />
+        <Footer />
 
-  <Toaster
-    richColors
-    position="top-right"
-  />
-</body>
+        <Toaster richColors position="top-right" />
+      </body>
+    </html>
+  );
+}
