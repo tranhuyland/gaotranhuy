@@ -1,106 +1,95 @@
 "use client";
 
-import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 
+import { Container } from "@/components/ui";
 import { useCartStore } from "@/features/cart/store";
 
-interface CheckoutSummaryProps {
-  isSubmitting: boolean;
-}
+import {
+  checkoutSchema,
+  type CheckoutFormData,
+} from "../validation";
 
-export function CheckoutSummary({
-  isSubmitting,
-}: CheckoutSummaryProps) {
-  const {
-    subtotal,
-    discount,
-    shippingFee,
-    total,
-    totalItems,
-  } = useCartStore((state) => state.summary);
+import { CheckoutForm } from "./CheckoutForm";
+import { CheckoutSummary } from "./CheckoutSummary";
+
+export function CheckoutPage() {
+  const router = useRouter();
+
+  const [isSubmitting, setIsSubmitting] =
+    useState(false);
 
   const items = useCartStore((state) => state.items);
 
-  const isEmpty = items.length === 0;
+  const clearCart = useCartStore(
+    (state) => state.clearCart
+  );
+
+  const form = useForm<CheckoutFormData>({
+    resolver: zodResolver(checkoutSchema),
+    defaultValues: {
+      payment: "cod",
+      note: "",
+      email: "",
+    },
+  });
+
+  const onSubmit = async (
+    data: CheckoutFormData
+  ) => {
+    if (items.length === 0) {
+      toast.error("Giỏ hàng đang trống.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      console.log(data);
+      console.log(items);
+
+      // Giả lập gọi API
+      await new Promise((resolve) =>
+        setTimeout(resolve, 1500)
+      );
+
+      clearCart();
+
+      toast.success("Đặt hàng thành công!");
+
+      router.replace("/dat-hang-thanh-cong");
+    } catch {
+      toast.error("Đặt hàng thất bại.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
-    <aside className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-      <h2 className="mb-6 text-2xl font-bold">
-        Tóm tắt đơn hàng
-      </h2>
+    <Container className="py-10">
+      <h1 className="mb-8 text-3xl font-bold">
+        Thanh toán
+      </h1>
 
-      <div className="space-y-4">
-        <div className="flex justify-between">
-          <span className="text-gray-600">
-            Số lượng sản phẩm
-          </span>
-
-          <span>{totalItems}</span>
-        </div>
-
-        <div className="flex justify-between">
-          <span className="text-gray-600">
-            Tạm tính
-          </span>
-
-          <span>
-            {subtotal.toLocaleString("vi-VN")}đ
-          </span>
-        </div>
-
-        <div className="flex justify-between">
-          <span className="text-gray-600">
-            Giảm giá
-          </span>
-
-          <span className="text-red-600">
-            -{discount.toLocaleString("vi-VN")}đ
-          </span>
-        </div>
-
-        <div className="flex justify-between">
-          <span className="text-gray-600">
-            Phí vận chuyển
-          </span>
-
-          <span>
-            {shippingFee === 0
-              ? "Miễn phí"
-              : `${shippingFee.toLocaleString(
-                  "vi-VN"
-                )}đ`}
-          </span>
-        </div>
-
-        <hr />
-
-        <div className="flex items-center justify-between text-xl font-bold">
-          <span>Tổng cộng</span>
-
-          <span className="text-green-700">
-            {total.toLocaleString("vi-VN")}đ
-          </span>
-        </div>
-      </div>
-
-      <button
-        type="submit"
-        disabled={isEmpty || isSubmitting}
-        className="mt-8 w-full rounded-xl bg-green-600 py-3 font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-gray-300"
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="grid gap-8 lg:grid-cols-[1fr_380px]"
       >
-        {isSubmitting
-          ? "Đang xử lý..."
-          : isEmpty
-          ? "Giỏ hàng trống"
-          : "Đặt hàng"}
-      </button>
+        <CheckoutForm
+          register={form.register}
+          errors={form.formState.errors}
+        />
 
-      <Link
-        href="/gio-hang"
-        className="mt-3 block text-center text-sm text-green-700 hover:underline"
-      >
-        ← Quay lại giỏ hàng
-      </Link>
-    </aside>
+        <div className="h-fit lg:sticky lg:top-24">
+          <CheckoutSummary
+            isSubmitting={isSubmitting}
+          />
+        </div>
+      </form>
+    </Container>
   );
 }
