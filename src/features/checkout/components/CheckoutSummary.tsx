@@ -10,23 +10,23 @@ export function CheckoutSummary() {
     discount,
     shippingFee,
     total,
+    totalItems,
   } = useCartStore((state) => state.summary);
 
-  const totalItems = useCartStore(
-    (state) => state.items.length
-  );
+  const items = useCartStore((state) => state.items);
+
+  const isEmpty = items.length === 0;
 
   return (
-    <aside className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm lg:sticky lg:top-24">
+    <aside className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
       <h2 className="mb-6 text-2xl font-bold">
         Tóm tắt đơn hàng
       </h2>
 
       <div className="space-y-4">
-
         <div className="flex justify-between">
           <span className="text-gray-600">
-            Sản phẩm
+            Số lượng sản phẩm
           </span>
 
           <span>{totalItems}</span>
@@ -73,12 +73,12 @@ export function CheckoutSummary() {
             {total.toLocaleString("vi-VN")}đ
           </span>
         </div>
-
       </div>
 
       <button
         type="submit"
-        className="mt-8 w-full rounded-xl bg-green-600 py-3 font-semibold text-white transition hover:bg-green-700"
+        disabled={isEmpty}
+        className="mt-8 w-full rounded-xl bg-green-600 py-3 font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-gray-300"
       >
         Đặt hàng
       </button>
