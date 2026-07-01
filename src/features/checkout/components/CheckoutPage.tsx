@@ -1,17 +1,26 @@
 "use client";
 
 import { Container } from "@/components/ui";
+import { useCartStore } from "@/features/cart/store";
 
 import { CheckoutForm } from "./CheckoutForm";
 import { CheckoutSummary } from "./CheckoutSummary";
 
 export function CheckoutPage() {
+  const items = useCartStore((state) => state.items);
+
   function handleSubmit(
     e: React.FormEvent<HTMLFormElement>
   ) {
     e.preventDefault();
 
+    if (items.length === 0) {
+      alert("Giỏ hàng đang trống.");
+      return;
+    }
+
     console.log("Đặt hàng...");
+    console.log(items);
   }
 
   return (
