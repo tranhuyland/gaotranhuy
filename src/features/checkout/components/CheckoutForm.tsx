@@ -12,11 +12,13 @@ import { PaymentMethod } from "./PaymentMethod";
 interface CheckoutFormProps {
   register: UseFormRegister<CheckoutFormData>;
   errors: FieldErrors<CheckoutFormData>;
+  payment: CheckoutFormData["payment"];
 }
 
 export function CheckoutForm({
   register,
   errors,
+  payment,
 }: CheckoutFormProps) {
   return (
     <section className="space-y-8 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
@@ -128,6 +130,7 @@ export function CheckoutForm({
       <PaymentMethod
         register={register}
         errors={errors}
+        payment={payment}
       />
     </section>
   );
