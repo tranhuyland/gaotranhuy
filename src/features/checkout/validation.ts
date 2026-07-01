@@ -24,6 +24,13 @@ export const checkoutSchema = z.object({
     .min(2, "Chọn tỉnh/thành"),
 
   note: z.string().optional(),
+
+  payment: z.enum(
+    ["cod", "bank", "wallet"],
+    {
+      error: "Vui lòng chọn phương thức thanh toán",
+    }
+  ),
 });
 
 export type CheckoutFormData =
