@@ -5,16 +5,22 @@ import {
   Landmark,
   Wallet,
 } from "lucide-react";
-import type { UseFormRegister } from "react-hook-form";
+
+import type {
+  FieldErrors,
+  UseFormRegister,
+} from "react-hook-form";
 
 import type { CheckoutFormData } from "../validation";
 
 interface PaymentMethodProps {
   register: UseFormRegister<CheckoutFormData>;
+  errors?: FieldErrors<CheckoutFormData>;
 }
 
 export function PaymentMethod({
   register,
+  errors,
 }: PaymentMethodProps) {
   return (
     <section className="space-y-4 rounded-2xl border border-gray-200 bg-white p-6">
@@ -28,6 +34,7 @@ export function PaymentMethod({
           type="radio"
           value="cod"
           defaultChecked
+          aria-label="Thanh toán khi nhận hàng"
           {...register("payment")}
         />
 
@@ -52,6 +59,7 @@ export function PaymentMethod({
         <input
           type="radio"
           value="bank"
+          aria-label="Chuyển khoản ngân hàng"
           {...register("payment")}
         />
 
@@ -76,6 +84,7 @@ export function PaymentMethod({
         <input
           type="radio"
           value="wallet"
+          aria-label="Ví điện tử"
           {...register("payment")}
         />
 
@@ -94,6 +103,12 @@ export function PaymentMethod({
           </p>
         </div>
       </label>
+
+      {errors?.payment && (
+        <p className="text-sm text-red-500">
+          {errors.payment.message}
+        </p>
+      )}
     </section>
   );
 }
