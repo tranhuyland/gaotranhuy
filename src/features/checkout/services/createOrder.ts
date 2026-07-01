@@ -1,25 +1,12 @@
-import type { CheckoutFormData } from "../validation";
-
-export interface OrderItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-}
-
-interface CreateOrderParams {
-  customer: CheckoutFormData;
-  items: OrderItem[];
-}
+import type {
+  CreateOrderParams,
+  CreateOrderResponse,
+} from "../types";
 
 export async function createOrder({
   customer,
   items,
-}: CreateOrderParams) {
-  // TODO:
-  // Sau này gọi API:
-  // return await api.post("/orders", { customer, items });
-
+}: CreateOrderParams): Promise<CreateOrderResponse> {
   console.log("Customer:", customer);
   console.log("Items:", items);
 
