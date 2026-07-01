@@ -5,7 +5,7 @@ import { useState } from "react";
 import type { Product } from "@/types/product";
 
 import { QuantitySelector } from "@/features/cart/components/QuantitySelector";
-import { AddToCartButton } from "@/features/cart/components/AddToCartButton";
+import { AddToCartButton } from "@/features/products/components/AddToCartButton";
 
 interface ProductInfoProps {
   product: Product;
