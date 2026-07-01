@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useCartStore } from "../store";
 
 import type { CartItem as CartItemType } from "../types";
-
+import { QuantitySelector } from "./QuantitySelector";
 interface Props {
   item: CartItemType;
 }
@@ -38,25 +38,25 @@ export function CartItem({ item }: Props) {
         </p>
 
         <div className="mt-2 flex items-center gap-2">
-          <button onClick={() => decrease(item.product.id)}>
-            -
-          </button>
+  <button onClick={() => decrease(item.product.id)}>
+    -
+  </button>
 
-          <span>{item.quantity}</span>
+  <span>{item.quantity}</span>
 
-          <button onClick={() => increase(item.product.id)}>
-            +
-          </button>
+  <button onClick={() => increase(item.product.id)}>
+    +
+  </button>
 
-          <button
-            onClick={() =>
-              removeItem(item.product.id)
-            }
-            className="ml-auto text-xs text-red-500"
-          >
-            Xóa
-          </button>
-        </div>
+  <button
+    onClick={() =>
+      removeItem(item.product.id)
+    }
+    className="ml-auto text-xs text-red-500"
+  >
+    Xóa
+  </button>
+</div>
       </div>
     </div>
   );
