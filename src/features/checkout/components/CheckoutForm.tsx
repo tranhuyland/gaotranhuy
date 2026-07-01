@@ -13,21 +13,13 @@ import { PaymentMethod } from "./PaymentMethod";
 export function CheckoutForm() {
   const {
     register,
-    handleSubmit,
     formState: { errors },
   } = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutSchema),
   });
 
-  const onSubmit = (data: CheckoutFormData) => {
-    console.log(data);
-  };
-
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="space-y-6 rounded-2xl border bg-white p-6 shadow-sm"
-    >
+    <section className="space-y-6 rounded-2xl border bg-white p-6 shadow-sm">
       <h2 className="text-2xl font-bold">
         Thông tin khách hàng
       </h2>
@@ -71,6 +63,7 @@ export function CheckoutForm() {
         </label>
 
         <input
+          type="email"
           {...register("email")}
           className="w-full rounded-xl border p-3"
         />
@@ -126,13 +119,6 @@ export function CheckoutForm() {
       </div>
 
       <PaymentMethod />
-
-      <button
-        type="submit"
-        className="w-full rounded-xl bg-green-600 py-3 font-semibold text-white hover:bg-green-700"
-      >
-        Tiếp tục
-      </button>
-    </form>
+    </section>
   );
 }
