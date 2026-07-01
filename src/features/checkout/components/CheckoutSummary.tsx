@@ -1,13 +1,94 @@
+"use client";
+
+import Link from "next/link";
+
+import { useCartStore } from "@/features/cart/store";
+
 export function CheckoutSummary() {
+  const {
+    subtotal,
+    discount,
+    shippingFee,
+    total,
+  } = useCartStore((state) => state.summary);
+
+  const totalItems = useCartStore(
+    (state) => state.items.length
+  );
+
   return (
-    <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-      <h2 className="mb-6 text-2xl font-semibold">
+    <aside className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm lg:sticky lg:top-24">
+      <h2 className="mb-6 text-2xl font-bold">
         Tóm tắt đơn hàng
       </h2>
 
-      <p className="text-gray-500">
-        CheckoutSummary sẽ được xây dựng ở mốc 3.7.3
-      </p>
-    </section>
+      <div className="space-y-4">
+
+        <div className="flex justify-between">
+          <span className="text-gray-600">
+            Sản phẩm
+          </span>
+
+          <span>{totalItems}</span>
+        </div>
+
+        <div className="flex justify-between">
+          <span className="text-gray-600">
+            Tạm tính
+          </span>
+
+          <span>
+            {subtotal.toLocaleString("vi-VN")}đ
+          </span>
+        </div>
+
+        <div className="flex justify-between">
+          <span className="text-gray-600">
+            Giảm giá
+          </span>
+
+          <span className="text-red-600">
+            -{discount.toLocaleString("vi-VN")}đ
+          </span>
+        </div>
+
+        <div className="flex justify-between">
+          <span className="text-gray-600">
+            Phí vận chuyển
+          </span>
+
+          <span>
+            {shippingFee === 0
+              ? "Miễn phí"
+              : `${shippingFee.toLocaleString("vi-VN")}đ`}
+          </span>
+        </div>
+
+        <hr />
+
+        <div className="flex items-center justify-between text-xl font-bold">
+          <span>Tổng cộng</span>
+
+          <span className="text-green-700">
+            {total.toLocaleString("vi-VN")}đ
+          </span>
+        </div>
+
+      </div>
+
+      <button
+        type="submit"
+        className="mt-8 w-full rounded-xl bg-green-600 py-3 font-semibold text-white transition hover:bg-green-700"
+      >
+        Đặt hàng
+      </button>
+
+      <Link
+        href="/gio-hang"
+        className="mt-3 block text-center text-sm text-green-700 hover:underline"
+      >
+        ← Quay lại giỏ hàng
+      </Link>
+    </aside>
   );
 }
