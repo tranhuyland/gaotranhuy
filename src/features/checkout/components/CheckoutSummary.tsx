@@ -28,7 +28,7 @@ export function CheckoutSummary({
   const isEmpty = items.length === 0;
 
   return (
-    <aside className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
+    <aside className="rounded-3xl border border-gray-200 bg-white p-8 shadow-md transition-all duration-300 hover:shadow-xl">
       <h2 className="mb-6 text-2xl font-bold text-gray-900">
         Tóm tắt đơn hàng
       </h2>
@@ -70,7 +70,7 @@ export function CheckoutSummary({
           </span>
 
           {shippingFee === 0 ? (
-            <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+            <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700 transition-all duration-300 hover:scale-105">
               Miễn phí
             </span>
           ) : (
@@ -96,7 +96,7 @@ export function CheckoutSummary({
       <button
         type="submit"
         disabled={isEmpty || isSubmitting}
-        className="mt-8 flex w-full items-center justify-center gap-2 rounded-2xl bg-green-600 py-3.5 font-semibold text-white shadow-lg shadow-green-200 transition-all duration-200 hover:-translate-y-0.5 hover:bg-green-700 hover:shadow-xl disabled:cursor-not-allowed disabled:bg-gray-300 disabled:shadow-none"
+        className="mt-8 flex w-full items-center justify-center gap-2 rounded-2xl bg-green-600 py-3.5 font-semibold text-white shadow-lg shadow-green-200 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-green-700 hover:shadow-xl active:scale-[0.98] disabled:pointer-events-none disabled:bg-gray-300 disabled:shadow-none"
       >
         {isSubmitting && (
           <Loader2
@@ -122,7 +122,7 @@ export function CheckoutSummary({
 
       <Link
         href="/gio-hang"
-        className="mt-5 block text-center text-sm font-medium text-green-700 transition hover:text-green-800 hover:underline"
+        className="mt-5 block text-center text-sm font-medium text-green-700 transition-all duration-200 hover:-translate-x-1 hover:text-green-800 hover:underline"
       >
         ← Quay lại giỏ hàng
       </Link>
