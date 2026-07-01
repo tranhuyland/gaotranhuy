@@ -16,6 +16,9 @@ export function CheckoutForm() {
     formState: { errors },
   } = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutSchema),
+    defaultValues: {
+      payment: "cod",
+    },
   });
 
   return (
@@ -118,7 +121,8 @@ export function CheckoutForm() {
         />
       </div>
 
-      <PaymentMethod />
+      {/* Phương thức thanh toán */}
+      <PaymentMethod register={register} />
     </section>
   );
 }
