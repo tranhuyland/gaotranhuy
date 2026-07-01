@@ -75,14 +75,13 @@ export function CheckoutSummary() {
         </div>
       </div>
 
-      <button
-  type="button"
-  onClick={() => alert("Đã click")}
-  className="mt-8 w-full rounded-xl bg-red-600 py-3 font-semibold text-white"
+<button
+  type="submit"
+  disabled={isEmpty}
+  className="mt-8 w-full rounded-xl bg-green-600 py-3 font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-gray-300"
 >
-  Test Click
+  {isEmpty ? "Giỏ hàng trống" : "Đặt hàng"}
 </button>
-
       <Link
         href="/gio-hang"
         className="mt-3 block text-center text-sm text-green-700 hover:underline"
