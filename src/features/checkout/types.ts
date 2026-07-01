@@ -1,15 +1,9 @@
 import type { CheckoutFormData } from "./validation";
-
-export interface OrderItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-}
+import type { CartItem } from "@/features/cart/types";
 
 export interface CreateOrderParams {
   customer: CheckoutFormData;
-  items: OrderItem[];
+  items: CartItem[];
 }
 
 export interface CreateOrderResponse {
