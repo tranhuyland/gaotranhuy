@@ -29,10 +29,9 @@ export function PaymentMethod() {
         <input
           type="radio"
           name="payment"
+          value="cod"
           checked={payment === "cod"}
-          onChange={() =>
-            setPayment("cod")
-          }
+          onChange={() => setPayment("cod")}
         />
 
         <CreditCard
@@ -46,8 +45,7 @@ export function PaymentMethod() {
           </p>
 
           <p className="text-sm text-gray-500">
-            Thanh toán bằng tiền mặt khi
-            nhận hàng.
+            Thanh toán bằng tiền mặt khi nhận hàng.
           </p>
         </div>
       </label>
@@ -63,10 +61,9 @@ export function PaymentMethod() {
         <input
           type="radio"
           name="payment"
+          value="bank"
           checked={payment === "bank"}
-          onChange={() =>
-            setPayment("bank")
-          }
+          onChange={() => setPayment("bank")}
         />
 
         <Landmark
@@ -80,8 +77,7 @@ export function PaymentMethod() {
           </p>
 
           <p className="text-sm text-gray-500">
-            Chuyển khoản trước khi giao
-            hàng.
+            Chuyển khoản trước khi giao hàng.
           </p>
         </div>
       </label>
@@ -97,10 +93,9 @@ export function PaymentMethod() {
         <input
           type="radio"
           name="payment"
+          value="wallet"
           checked={payment === "wallet"}
-          onChange={() =>
-            setPayment("wallet")
-          }
+          onChange={() => setPayment("wallet")}
         />
 
         <Wallet
