@@ -28,7 +28,8 @@ export const checkoutSchema = z.object({
   payment: z.enum(
     ["cod", "bank", "wallet"],
     {
-      error: "Vui lòng chọn phương thức thanh toán",
+      message:
+        "Vui lòng chọn phương thức thanh toán",
     }
   ),
 });
