@@ -15,7 +15,7 @@ export function CheckoutPage() {
       <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
         <CheckoutForm />
 
-        <div className="lg:sticky lg:top-24 h-fit">
+        <div className="h-fit lg:sticky lg:top-24">
           <CheckoutSummary />
         </div>
       </div>
