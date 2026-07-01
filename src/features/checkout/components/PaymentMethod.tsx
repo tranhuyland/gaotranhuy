@@ -1,17 +1,21 @@
 "use client";
 
-import { CreditCard, Landmark, Wallet } from "lucide-react";
-import { useState } from "react";
+import {
+  CreditCard,
+  Landmark,
+  Wallet,
+} from "lucide-react";
+import type { UseFormRegister } from "react-hook-form";
 
-type PaymentType =
-  | "cod"
-  | "bank"
-  | "wallet";
+import type { CheckoutFormData } from "../validation";
 
-export function PaymentMethod() {
-  const [payment, setPayment] =
-    useState<PaymentType>("cod");
+interface PaymentMethodProps {
+  register: UseFormRegister<CheckoutFormData>;
+}
 
+export function PaymentMethod({
+  register,
+}: PaymentMethodProps) {
   return (
     <section className="space-y-4 rounded-2xl border border-gray-200 bg-white p-6">
       <h3 className="text-xl font-semibold">
@@ -19,19 +23,12 @@ export function PaymentMethod() {
       </h3>
 
       {/* COD */}
-      <label
-        className={`flex cursor-pointer items-center gap-4 rounded-xl border p-4 transition ${
-          payment === "cod"
-            ? "border-green-600 bg-green-50"
-            : "border-gray-200"
-        }`}
-      >
+      <label className="flex cursor-pointer items-center gap-4 rounded-xl border border-green-600 bg-green-50 p-4 transition">
         <input
           type="radio"
-          name="payment"
           value="cod"
-          checked={payment === "cod"}
-          onChange={() => setPayment("cod")}
+          defaultChecked
+          {...register("payment")}
         />
 
         <CreditCard
@@ -51,19 +48,11 @@ export function PaymentMethod() {
       </label>
 
       {/* Bank */}
-      <label
-        className={`flex cursor-pointer items-center gap-4 rounded-xl border p-4 transition ${
-          payment === "bank"
-            ? "border-green-600 bg-green-50"
-            : "border-gray-200"
-        }`}
-      >
+      <label className="flex cursor-pointer items-center gap-4 rounded-xl border border-gray-200 p-4 transition hover:border-green-600">
         <input
           type="radio"
-          name="payment"
           value="bank"
-          checked={payment === "bank"}
-          onChange={() => setPayment("bank")}
+          {...register("payment")}
         />
 
         <Landmark
@@ -83,19 +72,11 @@ export function PaymentMethod() {
       </label>
 
       {/* Wallet */}
-      <label
-        className={`flex cursor-pointer items-center gap-4 rounded-xl border p-4 transition ${
-          payment === "wallet"
-            ? "border-green-600 bg-green-50"
-            : "border-gray-200"
-        }`}
-      >
+      <label className="flex cursor-pointer items-center gap-4 rounded-xl border border-gray-200 p-4 transition hover:border-green-600">
         <input
           type="radio"
-          name="payment"
           value="wallet"
-          checked={payment === "wallet"}
-          onChange={() => setPayment("wallet")}
+          {...register("payment")}
         />
 
         <Wallet
