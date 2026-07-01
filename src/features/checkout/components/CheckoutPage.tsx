@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import { createOrder } from "../services/createOrder";
+
 import { Container } from "@/components/ui";
 import { useCartStore } from "@/features/cart/store";
 
@@ -14,14 +13,13 @@ import {
   type CheckoutFormData,
 } from "../validation";
 
+import { createOrder } from "../services/createOrder";
+
 import { CheckoutForm } from "./CheckoutForm";
 import { CheckoutSummary } from "./CheckoutSummary";
 
 export function CheckoutPage() {
   const router = useRouter();
-
-  const [isSubmitting, setIsSubmitting] =
-    useState(false);
 
   const items = useCartStore((state) => state.items);
 
@@ -38,35 +36,37 @@ export function CheckoutPage() {
     },
   });
 
+  const {
+    formState: { isSubmitting },
+  } = form;
+
   const onSubmit = async (
     data: CheckoutFormData
   ) => {
+    if (isSubmitting) return;
+
     if (items.length === 0) {
       toast.error("Giỏ hàng đang trống.");
       return;
     }
 
-    setIsSubmitting(true);
-
     try {
       const result = await createOrder({
-  customer: data,
-  items,
-});
+        customer: data,
+        items,
+      });
 
-if (!result.success) {
-  throw new Error("Create order failed");
-}
+      if (!result.success) {
+        throw new Error("Create order failed");
+      }
 
-clearCart();
+      clearCart();
 
       toast.success("Đặt hàng thành công!");
 
       router.replace("/dat-hang-thanh-cong");
     } catch {
       toast.error("Đặt hàng thất bại.");
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
