@@ -1,7 +1,7 @@
 "use client";
 
 import { ShoppingCart } from "lucide-react";
-
+import { toast } from "sonner";
 import { Button } from "@/components/ui/Button";
 import { useCartStore } from "@/features/cart/store";
 import type { Product } from "@/types/product";
@@ -24,9 +24,13 @@ export function AddToCartButton({
 
   return (
     <Button
-      onClick={() =>
-        addItem(product, quantity)
-      }
+      onClick={() => {
+  addItem(product, quantity);
+
+  toast.success(
+    `${product.name} đã được thêm vào giỏ hàng`
+  );
+}}
       disabled={isOutOfStock}
       className="flex w-full items-center justify-center gap-2"
     >
