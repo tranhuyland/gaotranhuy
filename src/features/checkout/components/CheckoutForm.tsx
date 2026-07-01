@@ -118,7 +118,11 @@ export function CheckoutForm({
         />
       </div>
 
-      <PaymentMethod register={register} />
+      {/* Phương thức thanh toán */}
+      <PaymentMethod
+        register={register}
+        errors={errors}
+      />
     </section>
   );
 }
