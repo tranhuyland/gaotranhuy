@@ -26,7 +26,7 @@ export function PaymentMethod({
   payment,
 }: PaymentMethodProps) {
   return (
-    <section className="space-y-5 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+    <section className="space-y-5 rounded-3xl border border-gray-200 bg-white p-8 shadow-md">
       <div>
         <h3 className="text-xl font-bold text-gray-900">
           Phương thức thanh toán
@@ -39,24 +39,24 @@ export function PaymentMethod({
 
       {/* COD */}
       <label
-        className={`group relative flex cursor-pointer items-center gap-5 rounded-2xl p-5 transition-all duration-200 ${
+        className={`group relative flex cursor-pointer items-center gap-5 rounded-2xl p-5 transition-all duration-300 ${
           payment === "cod"
-            ? "border-2 border-green-600 bg-green-50 shadow-md"
-            : "border border-gray-200 bg-white hover:-translate-y-0.5 hover:border-green-500 hover:shadow-md"
+            ? "scale-[1.01] border-2 border-green-600 bg-green-50 shadow-lg"
+            : "border border-gray-200 bg-white hover:-translate-y-1 hover:scale-[1.01] hover:border-green-500 hover:shadow-lg"
         }`}
       >
         <input
           type="radio"
           value="cod"
           {...register("payment")}
-          className="h-5 w-5 accent-green-600"
+          className="sr-only"
         />
 
         <div
-          className={`rounded-xl p-3 transition ${
+          className={`rounded-xl p-3 transition-all duration-300 ${
             payment === "cod"
-              ? "bg-green-100 text-green-700"
-              : "bg-gray-100 text-gray-500"
+              ? "scale-110 bg-green-100 text-green-700"
+              : "bg-gray-100 text-gray-500 group-hover:scale-105"
           }`}
         >
           <CreditCard size={24} />
@@ -72,34 +72,36 @@ export function PaymentMethod({
           </p>
         </div>
 
-        {payment === "cod" && (
-          <CheckCircle2
-            size={22}
-            className="text-green-600"
-          />
-        )}
+        <CheckCircle2
+          size={22}
+          className={`transition-all duration-300 ${
+            payment === "cod"
+              ? "scale-100 text-green-600 opacity-100"
+              : "scale-75 text-transparent opacity-0"
+          }`}
+        />
       </label>
 
       {/* Bank */}
       <label
-        className={`group relative flex cursor-pointer items-center gap-5 rounded-2xl p-5 transition-all duration-200 ${
+        className={`group relative flex cursor-pointer items-center gap-5 rounded-2xl p-5 transition-all duration-300 ${
           payment === "bank"
-            ? "border-2 border-green-600 bg-green-50 shadow-md"
-            : "border border-gray-200 bg-white hover:-translate-y-0.5 hover:border-green-500 hover:shadow-md"
+            ? "scale-[1.01] border-2 border-green-600 bg-green-50 shadow-lg"
+            : "border border-gray-200 bg-white hover:-translate-y-1 hover:scale-[1.01] hover:border-green-500 hover:shadow-lg"
         }`}
       >
         <input
           type="radio"
           value="bank"
           {...register("payment")}
-          className="h-5 w-5 accent-green-600"
+          className="sr-only"
         />
 
         <div
-          className={`rounded-xl p-3 transition ${
+          className={`rounded-xl p-3 transition-all duration-300 ${
             payment === "bank"
-              ? "bg-green-100 text-green-700"
-              : "bg-gray-100 text-gray-500"
+              ? "scale-110 bg-green-100 text-green-700"
+              : "bg-gray-100 text-gray-500 group-hover:scale-105"
           }`}
         >
           <Landmark size={24} />
@@ -115,34 +117,36 @@ export function PaymentMethod({
           </p>
         </div>
 
-        {payment === "bank" && (
-          <CheckCircle2
-            size={22}
-            className="text-green-600"
-          />
-        )}
+        <CheckCircle2
+          size={22}
+          className={`transition-all duration-300 ${
+            payment === "bank"
+              ? "scale-100 text-green-600 opacity-100"
+              : "scale-75 text-transparent opacity-0"
+          }`}
+        />
       </label>
 
       {/* Wallet */}
       <label
-        className={`group relative flex cursor-pointer items-center gap-5 rounded-2xl p-5 transition-all duration-200 ${
+        className={`group relative flex cursor-pointer items-center gap-5 rounded-2xl p-5 transition-all duration-300 ${
           payment === "wallet"
-            ? "border-2 border-green-600 bg-green-50 shadow-md"
-            : "border border-gray-200 bg-white hover:-translate-y-0.5 hover:border-green-500 hover:shadow-md"
+            ? "scale-[1.01] border-2 border-green-600 bg-green-50 shadow-lg"
+            : "border border-gray-200 bg-white hover:-translate-y-1 hover:scale-[1.01] hover:border-green-500 hover:shadow-lg"
         }`}
       >
         <input
           type="radio"
           value="wallet"
           {...register("payment")}
-          className="h-5 w-5 accent-green-600"
+          className="sr-only"
         />
 
         <div
-          className={`rounded-xl p-3 transition ${
+          className={`rounded-xl p-3 transition-all duration-300 ${
             payment === "wallet"
-              ? "bg-green-100 text-green-700"
-              : "bg-gray-100 text-gray-500"
+              ? "scale-110 bg-green-100 text-green-700"
+              : "bg-gray-100 text-gray-500 group-hover:scale-105"
           }`}
         >
           <Wallet size={24} />
@@ -158,12 +162,14 @@ export function PaymentMethod({
           </p>
         </div>
 
-        {payment === "wallet" && (
-          <CheckCircle2
-            size={22}
-            className="text-green-600"
-          />
-        )}
+        <CheckCircle2
+          size={22}
+          className={`transition-all duration-300 ${
+            payment === "wallet"
+              ? "scale-100 text-green-600 opacity-100"
+              : "scale-75 text-transparent opacity-0"
+          }`}
+        />
       </label>
 
       {errors?.payment && (
