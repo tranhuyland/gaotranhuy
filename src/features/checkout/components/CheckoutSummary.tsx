@@ -4,7 +4,13 @@ import Link from "next/link";
 
 import { useCartStore } from "@/features/cart/store";
 
-export function CheckoutSummary() {
+interface CheckoutSummaryProps {
+  isSubmitting: boolean;
+}
+
+export function CheckoutSummary({
+  isSubmitting,
+}: CheckoutSummaryProps) {
   const {
     subtotal,
     discount,
@@ -60,7 +66,9 @@ export function CheckoutSummary() {
           <span>
             {shippingFee === 0
               ? "Miễn phí"
-              : `${shippingFee.toLocaleString("vi-VN")}đ`}
+              : `${shippingFee.toLocaleString(
+                  "vi-VN"
+                )}đ`}
           </span>
         </div>
 
@@ -75,13 +83,18 @@ export function CheckoutSummary() {
         </div>
       </div>
 
-<button
-  type="submit"
-  disabled={isEmpty}
-  className="mt-8 w-full rounded-xl bg-green-600 py-3 font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-gray-300"
->
-  {isEmpty ? "Giỏ hàng trống" : "Đặt hàng"}
-</button>
+      <button
+        type="submit"
+        disabled={isEmpty || isSubmitting}
+        className="mt-8 w-full rounded-xl bg-green-600 py-3 font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-gray-300"
+      >
+        {isSubmitting
+          ? "Đang xử lý..."
+          : isEmpty
+          ? "Giỏ hàng trống"
+          : "Đặt hàng"}
+      </button>
+
       <Link
         href="/gio-hang"
         className="mt-3 block text-center text-sm text-green-700 hover:underline"
