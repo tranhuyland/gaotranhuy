@@ -10,6 +10,7 @@ export default function HomePage() {
       <Hero />
       <Categories />
       <FeaturedProducts />
+      <WhyChooseUs />
     </>
   );
 }
