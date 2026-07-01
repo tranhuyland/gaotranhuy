@@ -23,89 +23,92 @@ export function PaymentMethod({
   errors,
 }: PaymentMethodProps) {
   return (
-    <section className="space-y-4 rounded-2xl border border-gray-200 bg-white p-6">
-      <h3 className="text-xl font-semibold">
-        Phương thức thanh toán
-      </h3>
+    <section className="space-y-5 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+      <div>
+        <h3 className="text-xl font-bold text-gray-900">
+          Phương thức thanh toán
+        </h3>
+
+        <p className="mt-1 text-sm text-gray-500">
+          Chọn hình thức thanh toán phù hợp.
+        </p>
+      </div>
 
       {/* COD */}
-      <label className="flex cursor-pointer items-center gap-4 rounded-xl border border-green-600 bg-green-50 p-4 transition">
+      <label className="group flex cursor-pointer items-center gap-5 rounded-2xl border border-green-600 bg-green-50 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-green-600 hover:shadow-md">
         <input
           type="radio"
           value="cod"
           defaultChecked
-          aria-label="Thanh toán khi nhận hàng"
           {...register("payment")}
+          className="h-5 w-5 accent-green-600"
         />
 
-        <CreditCard
-          className="text-green-700"
-          size={24}
-        />
+        <div className="rounded-xl bg-green-100 p-3 text-green-700 transition group-hover:scale-105">
+          <CreditCard size={24} />
+        </div>
 
-        <div>
-          <p className="font-semibold">
+        <div className="flex-1">
+          <p className="font-semibold text-gray-900">
             Thanh toán khi nhận hàng
           </p>
 
-          <p className="text-sm text-gray-500">
-            Thanh toán bằng tiền mặt khi nhận hàng.
+          <p className="mt-1 text-sm text-gray-500">
+            Thanh toán bằng tiền mặt khi đơn hàng được giao.
           </p>
         </div>
       </label>
 
       {/* Bank */}
-      <label className="flex cursor-pointer items-center gap-4 rounded-xl border border-gray-200 p-4 transition hover:border-green-600">
+      <label className="group flex cursor-pointer items-center gap-5 rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-green-600 hover:shadow-md">
         <input
           type="radio"
           value="bank"
-          aria-label="Chuyển khoản ngân hàng"
           {...register("payment")}
+          className="h-5 w-5 accent-green-600"
         />
 
-        <Landmark
-          className="text-green-700"
-          size={24}
-        />
+        <div className="rounded-xl bg-gray-100 p-3 text-green-700 transition group-hover:scale-105">
+          <Landmark size={24} />
+        </div>
 
-        <div>
-          <p className="font-semibold">
+        <div className="flex-1">
+          <p className="font-semibold text-gray-900">
             Chuyển khoản ngân hàng
           </p>
 
-          <p className="text-sm text-gray-500">
-            Chuyển khoản trước khi giao hàng.
+          <p className="mt-1 text-sm text-gray-500">
+            Thanh toán trước qua tài khoản ngân hàng.
           </p>
         </div>
       </label>
 
       {/* Wallet */}
-      <label className="flex cursor-pointer items-center gap-4 rounded-xl border border-gray-200 p-4 transition hover:border-green-600">
+      <label className="group flex cursor-pointer items-center gap-5 rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-green-600 hover:shadow-md">
         <input
           type="radio"
           value="wallet"
-          aria-label="Ví điện tử"
           {...register("payment")}
+          className="h-5 w-5 accent-green-600"
         />
 
-        <Wallet
-          className="text-green-700"
-          size={24}
-        />
+        <div className="rounded-xl bg-gray-100 p-3 text-green-700 transition group-hover:scale-105">
+          <Wallet size={24} />
+        </div>
 
-        <div>
-          <p className="font-semibold">
+        <div className="flex-1">
+          <p className="font-semibold text-gray-900">
             Ví điện tử
           </p>
 
-          <p className="text-sm text-gray-500">
-            MoMo, ZaloPay, VNPay...
+          <p className="mt-1 text-sm text-gray-500">
+            Hỗ trợ MoMo, ZaloPay, VNPay...
           </p>
         </div>
       </label>
 
       {errors?.payment && (
-        <p className="text-sm text-red-500">
+        <p className="text-sm font-medium text-red-500">
           {errors.payment.message}
         </p>
       )}
