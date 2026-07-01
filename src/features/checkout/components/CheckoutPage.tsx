@@ -83,6 +83,7 @@ export function CheckoutPage() {
         <CheckoutForm
           register={form.register}
           errors={form.formState.errors}
+          payment={form.watch("payment")}
         />
 
         <div className="h-fit lg:sticky lg:top-24">
