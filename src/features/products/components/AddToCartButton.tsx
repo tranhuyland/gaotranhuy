@@ -8,10 +8,12 @@ import type { Product } from "@/types/product";
 
 interface AddToCartButtonProps {
   product: Product;
+  quantity?: number;
 }
 
 export function AddToCartButton({
   product,
+  quantity = 1,
 }: AddToCartButtonProps) {
   const addItem = useCartStore(
     (state) => state.addItem
@@ -22,9 +24,11 @@ export function AddToCartButton({
 
   return (
     <Button
-      onClick={() => addItem(product)}
+      onClick={() =>
+        addItem(product, quantity)
+      }
       disabled={isOutOfStock}
-      className="w-full"
+      className="flex w-full items-center justify-center gap-2"
     >
       <ShoppingCart className="h-5 w-5" />
 
