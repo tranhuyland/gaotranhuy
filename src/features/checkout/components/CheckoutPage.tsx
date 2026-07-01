@@ -49,15 +49,16 @@ export function CheckoutPage() {
     setIsSubmitting(true);
 
     try {
-      console.log(data);
-      console.log(items);
+      const result = await createOrder({
+  customer: data,
+  items,
+});
 
-      // Giả lập gọi API
-      await new Promise((resolve) =>
-        setTimeout(resolve, 1500)
-      );
+if (!result.success) {
+  throw new Error("Create order failed");
+}
 
-      clearCart();
+clearCart();
 
       toast.success("Đặt hàng thành công!");
 
