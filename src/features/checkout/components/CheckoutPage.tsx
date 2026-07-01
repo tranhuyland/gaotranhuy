@@ -13,11 +13,12 @@ export function CheckoutPage() {
   const router = useRouter();
 
   const items = useCartStore((state) => state.items);
+
   const clearCart = useCartStore(
     (state) => state.clearCart
   );
 
-  function handleSubmit(
+  async function handleSubmit(
     e: React.FormEvent<HTMLFormElement>
   ) {
     e.preventDefault();
@@ -27,19 +28,21 @@ export function CheckoutPage() {
       return;
     }
 
-    console.log("Đặt hàng...");
-    console.log(items);
+    try {
+      // TODO:
+      // await createOrder(...)
 
-    // TODO:
-    // await createOrder(...)
+      console.log("Đặt hàng...");
+      console.log(items);
 
-    clearCart();
+      clearCart();
 
-    toast.success(
-      "Đặt hàng thành công!"
-    );
+      toast.success("Đặt hàng thành công!");
 
-    router.push("/dat-hang-thanh-cong");
+      router.replace("/dat-hang-thanh-cong");
+    } catch {
+      toast.error("Đặt hàng thất bại.");
+    }
   }
 
   return (
