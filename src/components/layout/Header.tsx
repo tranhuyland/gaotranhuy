@@ -8,11 +8,25 @@ import { CartDrawer } from "@/features/cart/components";
 export function Header() {
   return (
     <>
-      {/* TopBar */}
+      {/* TopBar chỉ hiện Desktop */}
       <TopBar />
 
       {/* Header cố định */}
-      <header className="fixed left-0 right-0 top-0 z-50 border-b border-gray-200 bg-white/95 shadow-sm backdrop-blur">
+      <header
+        className="
+          fixed
+          left-0
+          right-0
+          top-0
+          lg:top-10
+          z-50
+          border-b
+          border-gray-200
+          bg-white/95
+          shadow-sm
+          backdrop-blur
+        "
+      >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:h-20 lg:px-8">
           <Logo />
 
@@ -28,8 +42,8 @@ export function Header() {
         </div>
       </header>
 
-      {/* Khoảng trống tránh nội dung bị Header che */}
-      <div className="h-16 lg:h-20" />
+      {/* Spacer */}
+      <div className="h-16 lg:h-[120px]" />
     </>
   );
 }
