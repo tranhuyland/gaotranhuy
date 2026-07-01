@@ -8,11 +8,12 @@ import { CartDrawer } from "@/features/cart/components";
 export function Header() {
   return (
     <>
+      {/* TopBar */}
       <TopBar />
 
-      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 shadow-sm backdrop-blur">
+      {/* Header cố định */}
+      <header className="fixed left-0 right-0 top-0 z-50 border-b border-gray-200 bg-white/95 shadow-sm backdrop-blur">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:h-20 lg:px-8">
-
           <Logo />
 
           <DesktopMenu />
@@ -24,9 +25,11 @@ export function Header() {
 
             <MobileMenu />
           </div>
-
         </div>
       </header>
+
+      {/* Khoảng trống tránh nội dung bị Header che */}
+      <div className="h-16 lg:h-20" />
     </>
   );
 }
