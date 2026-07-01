@@ -1,5 +1,8 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+
 import { Container } from "@/components/ui";
 import { useCartStore } from "@/features/cart/store";
 
@@ -7,7 +10,12 @@ import { CheckoutForm } from "./CheckoutForm";
 import { CheckoutSummary } from "./CheckoutSummary";
 
 export function CheckoutPage() {
+  const router = useRouter();
+
   const items = useCartStore((state) => state.items);
+  const clearCart = useCartStore(
+    (state) => state.clearCart
+  );
 
   function handleSubmit(
     e: React.FormEvent<HTMLFormElement>
@@ -15,12 +23,23 @@ export function CheckoutPage() {
     e.preventDefault();
 
     if (items.length === 0) {
-      alert("Giỏ hàng đang trống.");
+      toast.error("Giỏ hàng đang trống.");
       return;
     }
 
     console.log("Đặt hàng...");
     console.log(items);
+
+    // TODO:
+    // await createOrder(...)
+
+    clearCart();
+
+    toast.success(
+      "Đặt hàng thành công!"
+    );
+
+    router.push("/dat-hang-thanh-cong");
   }
 
   return (
