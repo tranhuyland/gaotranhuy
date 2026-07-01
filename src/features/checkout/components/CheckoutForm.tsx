@@ -1,26 +1,23 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import type {
+  FieldErrors,
+  UseFormRegister,
+} from "react-hook-form";
 
-import {
-  checkoutSchema,
-  type CheckoutFormData,
-} from "../validation";
+import type { CheckoutFormData } from "../validation";
 
 import { PaymentMethod } from "./PaymentMethod";
 
-export function CheckoutForm() {
-  const {
-    register,
-    formState: { errors },
-  } = useForm<CheckoutFormData>({
-    resolver: zodResolver(checkoutSchema),
-    defaultValues: {
-      payment: "cod",
-    },
-  });
+interface CheckoutFormProps {
+  register: UseFormRegister<CheckoutFormData>;
+  errors: FieldErrors<CheckoutFormData>;
+}
 
+export function CheckoutForm({
+  register,
+  errors,
+}: CheckoutFormProps) {
   return (
     <section className="space-y-6 rounded-2xl border bg-white p-6 shadow-sm">
       <h2 className="text-2xl font-bold">
@@ -121,7 +118,6 @@ export function CheckoutForm() {
         />
       </div>
 
-      {/* Phương thức thanh toán */}
       <PaymentMethod register={register} />
     </section>
   );
