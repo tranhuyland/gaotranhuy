@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Loader2 } from "lucide-react";
 
 import { useCartStore } from "@/features/cart/store";
 
@@ -86,8 +87,15 @@ export function CheckoutSummary({
       <button
         type="submit"
         disabled={isEmpty || isSubmitting}
-        className="mt-8 w-full rounded-xl bg-green-600 py-3 font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-gray-300"
+        className="mt-8 flex w-full items-center justify-center gap-2 rounded-xl bg-green-600 py-3 font-semibold text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-gray-300"
       >
+        {isSubmitting && (
+          <Loader2
+            size={18}
+            className="animate-spin"
+          />
+        )}
+
         {isSubmitting
           ? "Đang xử lý..."
           : isEmpty
