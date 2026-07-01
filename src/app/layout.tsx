@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
+import { Toaster } from "sonner";
 import { Header, Footer } from "@/components/layout";
 import { siteConfig } from "@/config/site";
 
@@ -39,12 +39,14 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body className="min-h-screen bg-gray-50 text-gray-900">
-        <Header />
+  <Header />
 
-        {children}
+  {children}
 
-        <Footer />
-      </body>
-    </html>
-  );
-}
+  <Footer />
+
+  <Toaster
+    richColors
+    position="top-right"
+  />
+</body>
