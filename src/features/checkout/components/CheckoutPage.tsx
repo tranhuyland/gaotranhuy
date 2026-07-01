@@ -65,13 +65,7 @@ export function CheckoutPage() {
       </h1>
 
       <form
-        onSubmit={form.handleSubmit(
-  onSubmit,
-  (errors) => {
-    console.log(errors);
-    alert("Form lỗi");
-  }
-)}
+        onSubmit={form.handleSubmit(onSubmit)}
         className="grid gap-8 lg:grid-cols-[1fr_380px]"
       >
         <CheckoutForm
