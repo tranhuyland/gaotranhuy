@@ -71,14 +71,20 @@ export function CheckoutPage() {
   };
 
   return (
-    <Container className="py-10">
-      <h1 className="mb-8 text-3xl font-bold">
-        Thanh toán
-      </h1>
+    <Container className="py-10 lg:py-12">
+      <div className="mb-10">
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+          Thanh toán
+        </h1>
+
+        <p className="mt-2 text-sm text-gray-500">
+          Vui lòng kiểm tra thông tin trước khi hoàn tất đơn hàng.
+        </p>
+      </div>
 
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="grid gap-8 lg:grid-cols-[1fr_380px]"
+        className="grid items-start gap-8 xl:grid-cols-[minmax(0,1fr)_400px]"
       >
         <CheckoutForm
           register={form.register}
@@ -86,7 +92,7 @@ export function CheckoutPage() {
           payment={form.watch("payment")}
         />
 
-        <div className="h-fit lg:sticky lg:top-24">
+        <div className="h-fit xl:sticky xl:top-24">
           <CheckoutSummary
             isSubmitting={isSubmitting}
           />
