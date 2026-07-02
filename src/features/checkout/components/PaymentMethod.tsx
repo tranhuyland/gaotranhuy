@@ -26,23 +26,23 @@ export function PaymentMethod({
   payment,
 }: PaymentMethodProps) {
   return (
-    <section className="space-y-5 rounded-3xl border border-gray-200 bg-white p-8 shadow-md">
+    <section className="space-y-6 rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-md">
       <div>
         <h3 className="text-xl font-bold text-gray-900">
           Phương thức thanh toán
         </h3>
 
-        <p className="mt-1 text-sm text-gray-500">
-          Chọn hình thức thanh toán phù hợp.
+        <p className="mt-2 text-sm text-gray-500">
+          Chọn hình thức thanh toán phù hợp với nhu cầu của bạn.
         </p>
       </div>
 
       {/* COD */}
       <label
-        className={`group relative flex cursor-pointer items-center gap-5 rounded-2xl p-5 transition-all duration-300 ${
+        className={`group flex cursor-pointer items-center gap-5 rounded-2xl p-5 transition-all duration-300 ${
           payment === "cod"
-            ? "scale-[1.01] border-2 border-green-600 bg-green-50 shadow-lg"
-            : "border border-gray-200 bg-white hover:-translate-y-1 hover:scale-[1.01] hover:border-green-500 hover:shadow-lg"
+            ? "border-2 border-green-600 bg-green-50 shadow-sm"
+            : "border border-gray-200 bg-white hover:border-green-500 hover:shadow-sm"
         }`}
       >
         <input
@@ -53,10 +53,10 @@ export function PaymentMethod({
         />
 
         <div
-          className={`rounded-xl p-3 transition-all duration-300 ${
+          className={`rounded-2xl p-3 transition-all duration-300 ${
             payment === "cod"
-              ? "scale-110 bg-green-100 text-green-700"
-              : "bg-gray-100 text-gray-500 group-hover:scale-105"
+              ? "bg-green-100 text-green-700"
+              : "bg-gray-100 text-gray-500 group-hover:bg-green-50 group-hover:text-green-700"
           }`}
         >
           <CreditCard size={24} />
@@ -72,22 +72,20 @@ export function PaymentMethod({
           </p>
         </div>
 
-        <CheckCircle2
-          size={22}
-          className={`transition-all duration-300 ${
-            payment === "cod"
-              ? "scale-100 text-green-600 opacity-100"
-              : "scale-75 text-transparent opacity-0"
-          }`}
-        />
+        {payment === "cod" && (
+          <CheckCircle2
+            size={22}
+            className="text-green-600"
+          />
+        )}
       </label>
 
       {/* Bank */}
       <label
-        className={`group relative flex cursor-pointer items-center gap-5 rounded-2xl p-5 transition-all duration-300 ${
+        className={`group flex cursor-pointer items-center gap-5 rounded-2xl p-5 transition-all duration-300 ${
           payment === "bank"
-            ? "scale-[1.01] border-2 border-green-600 bg-green-50 shadow-lg"
-            : "border border-gray-200 bg-white hover:-translate-y-1 hover:scale-[1.01] hover:border-green-500 hover:shadow-lg"
+            ? "border-2 border-green-600 bg-green-50 shadow-sm"
+            : "border border-gray-200 bg-white hover:border-green-500 hover:shadow-sm"
         }`}
       >
         <input
@@ -98,10 +96,10 @@ export function PaymentMethod({
         />
 
         <div
-          className={`rounded-xl p-3 transition-all duration-300 ${
+          className={`rounded-2xl p-3 transition-all duration-300 ${
             payment === "bank"
-              ? "scale-110 bg-green-100 text-green-700"
-              : "bg-gray-100 text-gray-500 group-hover:scale-105"
+              ? "bg-green-100 text-green-700"
+              : "bg-gray-100 text-gray-500 group-hover:bg-green-50 group-hover:text-green-700"
           }`}
         >
           <Landmark size={24} />
@@ -117,22 +115,20 @@ export function PaymentMethod({
           </p>
         </div>
 
-        <CheckCircle2
-          size={22}
-          className={`transition-all duration-300 ${
-            payment === "bank"
-              ? "scale-100 text-green-600 opacity-100"
-              : "scale-75 text-transparent opacity-0"
-          }`}
-        />
+        {payment === "bank" && (
+          <CheckCircle2
+            size={22}
+            className="text-green-600"
+          />
+        )}
       </label>
 
       {/* Wallet */}
       <label
-        className={`group relative flex cursor-pointer items-center gap-5 rounded-2xl p-5 transition-all duration-300 ${
+        className={`group flex cursor-pointer items-center gap-5 rounded-2xl p-5 transition-all duration-300 ${
           payment === "wallet"
-            ? "scale-[1.01] border-2 border-green-600 bg-green-50 shadow-lg"
-            : "border border-gray-200 bg-white hover:-translate-y-1 hover:scale-[1.01] hover:border-green-500 hover:shadow-lg"
+            ? "border-2 border-green-600 bg-green-50 shadow-sm"
+            : "border border-gray-200 bg-white hover:border-green-500 hover:shadow-sm"
         }`}
       >
         <input
@@ -143,10 +139,10 @@ export function PaymentMethod({
         />
 
         <div
-          className={`rounded-xl p-3 transition-all duration-300 ${
+          className={`rounded-2xl p-3 transition-all duration-300 ${
             payment === "wallet"
-              ? "scale-110 bg-green-100 text-green-700"
-              : "bg-gray-100 text-gray-500 group-hover:scale-105"
+              ? "bg-green-100 text-green-700"
+              : "bg-gray-100 text-gray-500 group-hover:bg-green-50 group-hover:text-green-700"
           }`}
         >
           <Wallet size={24} />
@@ -162,14 +158,12 @@ export function PaymentMethod({
           </p>
         </div>
 
-        <CheckCircle2
-          size={22}
-          className={`transition-all duration-300 ${
-            payment === "wallet"
-              ? "scale-100 text-green-600 opacity-100"
-              : "scale-75 text-transparent opacity-0"
-          }`}
-        />
+        {payment === "wallet" && (
+          <CheckCircle2
+            size={22}
+            className="text-green-600"
+          />
+        )}
       </label>
 
       {errors?.payment && (
