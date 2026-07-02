@@ -23,6 +23,10 @@ export function CheckoutPage() {
 
   const items = useCartStore((state) => state.items);
 
+  const total = useCartStore(
+    (state) => state.summary.total
+  );
+
   const clearCart = useCartStore(
     (state) => state.clearCart
   );
@@ -60,11 +64,17 @@ export function CheckoutPage() {
         throw new Error("Create order failed");
       }
 
+      const orderCode = `DH${Date.now()}`;
+
       clearCart();
 
       toast.success("Đặt hàng thành công!");
 
-      router.replace("/dat-hang-thanh-cong");
+      router.replace(
+        `/dat-hang-thanh-cong?order=${orderCode}&total=${total}&name=${encodeURIComponent(
+          data.fullName
+        )}`
+      );
     } catch {
       toast.error("Đặt hàng thất bại.");
     }
